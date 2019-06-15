@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+
+files:
+  - source: ./
+    destination: /var/www/html
+    overwrite: yes
+
+hooks:
+  BeforeInstall:
+    - location: scripts/install_lamp.sh
+      runas: root
+  ApplicationStart:
+    - location: scripts/change-permission.sh
+      timeout: 3600
